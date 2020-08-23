@@ -49,7 +49,7 @@ task sourcesJar(type: Jar) {
 
 javadoc {
     failOnError = true
-    destinationDir = new File("${project.rootDir}/javadoc")
+    destinationDir = new File("${project.rootDir}/docs")
     options.memberLevel = JavadocMemberLevel.PUBLIC
     options.encoding = 'UTF-8'
     //options.addBooleanOption('html5', true)  // doesn't work with JDK8 and lower
