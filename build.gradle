@@ -34,7 +34,7 @@ class Version {
 jar {
     baseName = project.name
     manifest.attributes 'Implementation-Version': version
-    manifest.attributes 'Automatic-Module-Name': group + '.connectfour'
+    manifest.attributes 'Automatic-Module-Name': project.group + '.connectfour'
 }
 
 task javadocJar(type: Jar) {
