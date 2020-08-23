@@ -42,7 +42,7 @@ Since images tell more than words, you can get the current field by calling
 ```java
 final String currentField = game.getCurrentField(true|false);
 ```
-Depending on the boolean flag, the row and column numbers are also provided.
+If the provided boolean is `true`, the row and column numbers are also provided.
 
 If a game is over can be checked by calling
 ```java
