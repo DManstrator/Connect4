@@ -1,8 +1,17 @@
-apply plugin: 'java-library'
+plugins {
+    id 'com.jfrog.bintray' version '1.8.1'
+    id 'java-library'
+    id 'maven-publish'
+}
 
-version '1.0'
+def versionObj = new Version(major: 1, minor: 0, revision: 0)
 
-sourceCompatibility = 1.8
+group = "tk.dmanstrator"
+archivesBaseName = "Connect4"
+version = "$versionObj"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     jcenter()
@@ -13,3 +22,91 @@ dependencies {
 }
 
 compileJava.options.encoding = 'UTF-8'
+
+class Version {
+    int major, minor, revision
+
+    String toString() {
+        "$major.$minor.$revision"
+    }
+}
+
+jar {
+    baseName = project.name
+    manifest.attributes 'Implementation-Version': version
+    manifest.attributes 'Automatic-Module-Name': group + '.connectfour'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.java.srcDirs
+}
+
+javadoc {
+    failOnError = true
+    options.memberLevel = JavadocMemberLevel.PUBLIC
+    options.encoding = 'UTF-8'
+    //options.addBooleanOption('html5', true)  // doesn't work with JDK8 and lower
+}
+
+bintray {
+   	user = getProjectProperty("bintrayUsername")
+    key = getProjectProperty("bintrayApiKey")
+    publications = ["BintrayRelease"]
+    pkg {
+        repo = 'maven'
+        name = 'Connect4'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/DManstrator/Connect4.git'
+        publish = true
+        version {
+            name = project.version
+            released = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+        BintrayRelease(MavenPublication) {
+            from components.java
+            groupId group
+            artifactId archivesBaseName
+            version version
+            artifact javadocJar
+            artifact sourcesJar
+        }
+    }
+}
+
+String getProjectProperty(String propertyName) {
+    String property = ""
+    if (hasProperty(propertyName)) {
+        property = this.properties[propertyName]
+    }
+    return property
+}
+
+build {
+    dependsOn jar
+    dependsOn javadocJar
+    dependsOn sourcesJar
+
+    jar.mustRunAfter clean
+    javadocJar.mustRunAfter jar
+    sourcesJar.mustRunAfter javadocJar
+}
+
+bintrayUpload {
+    dependsOn clean
+    dependsOn build
+    build.mustRunAfter clean
+
+    onlyIf { !getProjectProperty("bintrayUsername").empty }
+    onlyIf { !getProjectProperty("bintrayApiKey").empty }
+}
