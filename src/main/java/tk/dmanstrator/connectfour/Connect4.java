@@ -201,9 +201,9 @@ public abstract class Connect4 {
     }
 
     /**
-     * Returns the current field as string with column and row numbers.
+     * Returns the current field as string with column and row numbers.<br><br>
      * 
-     * <h4>Example:</h4>
+     * <b>Example:</b>
      * <pre>{@code 
      *   1234567
      * 1[       ]
@@ -221,9 +221,9 @@ public abstract class Connect4 {
 
     /**
      * Returns the current field as string.
-     * The boolean determines if column and row numbers should be displayed or not.
+     * The boolean determines if column and row numbers should be displayed or not.<br><br>
      * 
-     * <h4>Example (without column and row numbers):</h4>
+     * <b>Example (without column and row numbers):</b>
      * <pre>{@code 
      * [       ]
      * [       ]
@@ -417,7 +417,7 @@ public abstract class Connect4 {
     /**
      * Checks if the game is over. Takes the last position for an optimized algorithm.
      * Algorithm is calculating the maximum hits in order and checks if it is equal or greater than 4.
-     * <br /><br />
+     * <br><br>
      * 
      * With the matrices, the following positions will be checked depending on the current position:
      * <pre>{@code 
@@ -471,7 +471,7 @@ public abstract class Connect4 {
 
     /**
      * Returns the color of a field depended on the matrix element.
-     * Calculates the correct coordinates based on the given matrix element.<br />
+     * Calculates the correct coordinates based on the given matrix element.<br>
      * Example. {@code srcX = 4, srcY = 2, offset = (-2, 2) => x = 2, y = 4} 
      * 
      * @param sourceMatrix Lookup matrix containing needed positions to check
