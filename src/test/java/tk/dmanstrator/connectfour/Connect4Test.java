@@ -11,35 +11,44 @@ import tk.dmanstrator.connectfour.log.GameLogEntryBuilder;
 import tk.dmanstrator.connectfour.log.GameLogEntry.RoundTitle;
 
 public abstract class Connect4Test {
-        private static final String NEWLINE = System.lineSeparator();
+    private static final String NEWLINE = System.lineSeparator();
 
     protected static final String PLAYER1 = "Test1";
     protected static final String PLAYER2 = "Test2";
-        @Test
+
+    @Test
     public void testPlayers()  {
         final Connect4 connect4 = getConnect4Game();
         Assert.assertEquals(null, connect4.getGameLog().getLastEntry());
-                String namePlayerOne = connect4.getFirstPlayerName();
+
+        String namePlayerOne = connect4.getFirstPlayerName();
         String namePlayerTwo = connect4.getSecondPlayerName();
+
         Assert.assertEquals(PLAYER1, namePlayerOne);
         Assert.assertEquals(PLAYER2, namePlayerTwo);
     }
-        @Test
+
+    @Test
     public abstract void testNormalGame();
-        @Test
+
+    @Test
     public abstract void testLast4OfMatrixAreValid();
-        @Test
+
+    @Test
     public abstract void testFiveInARow();
-        @Test
+
+    @Test
     public abstract void testInRange();
-        @Test
+
+    @Test
     public abstract void testDraw();
-        @Test
+
+    @Test
     public void testFieldPrints()  {
         final Connect4 connect4 = getConnect4Game();
-                final String withoutDetails = connect4.toString();
+        final String withoutDetails = connect4.toString();
         final String withDetails = connect4.getCurrentField();
-                final String expectedFieldWithDetails =
+        final String expectedFieldWithDetails =
             "  1234567"  + NEWLINE +
             "1[       ]" + NEWLINE +
             "2[       ]" + NEWLINE +
@@ -47,63 +56,75 @@ public abstract class Connect4Test {
             "4[  rry  ]" + NEWLINE +
             "5[yrrryyr]" + NEWLINE +
             "6[rryyyry]";
-                final String expectedFieldWithoutDetails =
-            "[       ]" + NEWLINE + 
-            "[       ]" + NEWLINE + 
-            "[   y   ]" + NEWLINE + 
-            "[  rry  ]" + NEWLINE + 
-            "[yrrryyr]" + NEWLINE + 
+        final String expectedFieldWithoutDetails =
+            "[       ]" + NEWLINE +
+            "[       ]" + NEWLINE +
+            "[   y   ]" + NEWLINE +
+            "[  rry  ]" + NEWLINE +
+            "[yrrryyr]" + NEWLINE +
             "[rryyyry]";
-                Assert.assertEquals("Expected field to be identical",
+        Assert.assertEquals("Expected field to be identical",
                 expectedFieldWithDetails, withDetails);
         Assert.assertEquals("Expected field to be identical",
                 expectedFieldWithoutDetails, withoutDetails);
     }
-        @Test
+
+    @Test
     public void testGameLog() {
-        Connect4 connect4 = getConnect4Game();
-        GameLog gameLog = connect4.getGameLog();
-                Assert.assertEquals("Expected 2 invalid entries",
+        final Connect4 connect4 = getConnect4Game();
+        final GameLog gameLog = connect4.getGameLog();
+        Assert.assertEquals("Expected 2 invalid entries",
                 2, gameLog.getInvalidEntries().size());
-                Assert.assertEquals("Expected 7 valid entries",
+        Assert.assertEquals("Expected 7 valid entries",
                 7, gameLog.getValidEntries().size());
-                Assert.assertEquals("Expected 9 entries in total",
+        Assert.assertEquals("Expected 9 entries in total",
                 9, gameLog.getEntries().size());
-                GameLogEntry lastEntry = gameLog.getLastEntry();
+
+        final GameLogEntry lastEntry = gameLog.getLastEntry();
         Assert.assertEquals(-1, lastEntry.getRoundNumber());
         Assert.assertEquals(2, lastEntry.getPlayerNumber());
         Assert.assertEquals(RoundTitle.INVALID, lastEntry.getRoundTitle());
         Assert.assertEquals("Chosen position (8, 6) is not in range!", lastEntry.getMessage());
         Assert.assertEquals("[invalid!] [Player 2]: Chosen position (8, 6) is not in range!", lastEntry.toString());
-                boolean addedInvalidDuplicate = gameLog.addEntry(lastEntry);
+
+        final boolean addedInvalidDuplicate = gameLog.addEntry(lastEntry);
         Assert.assertEquals(true, addedInvalidDuplicate);
-                boolean removedExistingEntry = gameLog.removeEntry(lastEntry);
+
+        final boolean removedExistingEntry = gameLog.removeEntry(lastEntry);
         Assert.assertEquals(true, removedExistingEntry);
-                GameLogEntry negativeEntry = gameLog.getEntry(-1);
-        GameLogEntry nonExistingEntry = gameLog.getEntry(10);
+
+        final GameLogEntry negativeEntry = gameLog.getEntry(-1);
+        final GameLogEntry nonExistingEntry = gameLog.getEntry(10);
         Assert.assertEquals(null, negativeEntry);
         Assert.assertEquals(null, nonExistingEntry);
-        boolean removeNonExistingEntry = gameLog.removeEntryFromRound(10);
+
+        final boolean removeNonExistingEntry = gameLog.removeEntryFromRound(10);
         Assert.assertEquals(false, removeNonExistingEntry);
-                Optional<GameLogEntry> optEntryFromRound = gameLog.getEntryFromRound(1);
+
+        Optional<GameLogEntry> optEntryFromRound = gameLog.getEntryFromRound(1);
         Assert.assertEquals(true, optEntryFromRound.isPresent());
-                GameLogEntry firstEntry = optEntryFromRound.get();
-        boolean addedDuplicate = gameLog.addEntry(firstEntry);
+
+        final GameLogEntry firstEntry = optEntryFromRound.get();
+        final boolean addedDuplicate = gameLog.addEntry(firstEntry);
         Assert.assertEquals(false, addedDuplicate);
-                GameLogEntry emptyEntry = new GameLogEntryBuilder().build();
-        boolean removeEmptyEntry = gameLog.removeEntry(emptyEntry);
+
+        final GameLogEntry emptyEntry = new GameLogEntryBuilder().build();
+        final boolean removeEmptyEntry = gameLog.removeEntry(emptyEntry);
         Assert.assertEquals(false, removeEmptyEntry);
-                Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" + 
+
+        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" +
                 "[invalid!] [Player 2]: Chosen position (8, 6) is not in range!", gameLog.getEntriesAsString(false));
-                Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" + 
-                "[Round 01] [Player 1]: Position (1, 6) belongs now to player Test1\r\n" + 
-                "[Round 02] [Player 2]: Position (2, 6) belongs now to player Test2\r\n" + 
-                "[Round 03] [Player 1]: Position (3, 6) belongs now to player Test1\r\n" + 
-                "[Round 04] [Player 2]: Position (4, 6) belongs now to player Test2\r\n" + 
-                "[Round 05] [Player 1]: Position (5, 6) belongs now to player Test1\r\n" + 
-                "[Round 06] [Player 2]: Position (6, 6) belongs now to player Test2\r\n" + 
-                "[Round 07] [Player 1]: Position (7, 6) belongs now to player Test1\r\n" + 
+        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" +
+                "[Round 01] [Player 1]: Position (1, 6) belongs now to player Test1\r\n" +
+                "[Round 02] [Player 2]: Position (2, 6) belongs now to player Test2\r\n" +
+                "[Round 03] [Player 1]: Position (3, 6) belongs now to player Test1\r\n" +
+                "[Round 04] [Player 2]: Position (4, 6) belongs now to player Test2\r\n" +
+                "[Round 05] [Player 1]: Position (5, 6) belongs now to player Test1\r\n" +
+                "[Round 06] [Player 2]: Position (6, 6) belongs now to player Test2\r\n" +
+                "[Round 07] [Player 1]: Position (7, 6) belongs now to player Test1\r\n" +
                 "[invalid!] [Player 2]: Chosen position (8, 6) is not in range!", gameLog.toString());
     }
-        public abstract Connect4 getConnect4Game();
-    }
+
+    public abstract Connect4 getConnect4Game();
+
+}

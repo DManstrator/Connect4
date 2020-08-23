@@ -55,6 +55,19 @@ javadoc {
     //options.addBooleanOption('html5', true)  // doesn't work with JDK8 and lower
 }
 
+publishing {
+    publications {
+        BintrayRelease(MavenPublication) {
+            from components.java
+            groupId group
+            artifactId archivesBaseName
+            version version
+            artifact javadocJar
+            artifact sourcesJar
+        }
+    }
+}
+
 bintray {
    	user = getProjectProperty("bintrayUsername")
     key = getProjectProperty("bintrayApiKey")
@@ -68,19 +81,6 @@ bintray {
         version {
             name = project.version
             released = new Date()
-        }
-    }
-}
-
-publishing {
-    publications {
-        BintrayRelease(MavenPublication) {
-            from components.java
-            groupId group
-            artifactId archivesBaseName
-            version version
-            artifact javadocJar
-            artifact sourcesJar
         }
     }
 }
