@@ -112,16 +112,16 @@ public abstract class Connect4Test {
         final boolean removeEmptyEntry = gameLog.removeEntry(emptyEntry);
         Assert.assertEquals(false, removeEmptyEntry);
 
-        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" +
+        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!" + System.lineSeparator() +
                 "[invalid!] [Player 2]: Chosen position (8, 6) is not in range!", gameLog.getEntriesAsString(false));
-        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!\r\n" +
-                "[Round 01] [Player 1]: Position (1, 6) belongs now to player Test1\r\n" +
-                "[Round 02] [Player 2]: Position (2, 6) belongs now to player Test2\r\n" +
-                "[Round 03] [Player 1]: Position (3, 6) belongs now to player Test1\r\n" +
-                "[Round 04] [Player 2]: Position (4, 6) belongs now to player Test2\r\n" +
-                "[Round 05] [Player 1]: Position (5, 6) belongs now to player Test1\r\n" +
-                "[Round 06] [Player 2]: Position (6, 6) belongs now to player Test2\r\n" +
-                "[Round 07] [Player 1]: Position (7, 6) belongs now to player Test1\r\n" +
+        Assert.assertEquals("[invalid!] [Player 1]: Chosen position (0, 6) is not in range!" + System.lineSeparator() +
+                "[Round 01] [Player 1]: Position (1, 6) belongs now to player Test1" + System.lineSeparator() +
+                "[Round 02] [Player 2]: Position (2, 6) belongs now to player Test2" + System.lineSeparator() +
+                "[Round 03] [Player 1]: Position (3, 6) belongs now to player Test1" + System.lineSeparator() +
+                "[Round 04] [Player 2]: Position (4, 6) belongs now to player Test2" + System.lineSeparator() +
+                "[Round 05] [Player 1]: Position (5, 6) belongs now to player Test1" + System.lineSeparator() +
+                "[Round 06] [Player 2]: Position (6, 6) belongs now to player Test2" + System.lineSeparator() +
+                "[Round 07] [Player 1]: Position (7, 6) belongs now to player Test1" + System.lineSeparator() +
                 "[invalid!] [Player 2]: Chosen position (8, 6) is not in range!", gameLog.toString());
     }
 
