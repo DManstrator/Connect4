@@ -4,6 +4,7 @@ Java library providing the logic for playing a game of Connect Four.
 ## Table Of Contents
 1. [Game Details](#game-details)
 2. [Download](#download)
+3. [JavaDoc](#javadoc)
 
 ## Game Details
 
@@ -109,3 +110,7 @@ dependencies {
     implementation group: 'tk.dmanstrator', name: 'Connect4', version: 'VERSION'
 }
 ```
+
+## JavaDoc
+
+JavaDoc is provided on [GitHub Pages](https://dmanstrator.github.io/Connect4/). Sources and JavaDoc will also be provided for each release.
