@@ -1,3 +1,8 @@
+[![JCenter](https://api.bintray.com/packages/DManstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
+[![Test Coverage](https://img.shields.io/badge/Test%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
+[![Code Coverage](https://img.shields.io/badge/Code%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
+[![License](https://img.shields.io/github/license/DManstrator/Connect4?color=%230066ff)](https://github.com/DManstrator/Connect4/blob/master/LICENSE)
+
 # Connect4
 Java library providing the logic for playing a game of Connect Four.
 
