@@ -1,4 +1,4 @@
-[![JCenter](https://api.bintray.com/packages/DManstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
+[![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
 [![Test Coverage](https://img.shields.io/badge/Test%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
 [![Code Coverage](https://img.shields.io/badge/Code%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
 [![License](https://img.shields.io/github/license/DManstrator/Connect4?color=%230066ff)](https://github.com/DManstrator/Connect4/blob/master/LICENSE)
@@ -13,9 +13,9 @@ Java library providing the logic for playing a game of Connect Four.
 
 ## Game Details
 
-### Game Modes
+## Game Modes
 
-#### Default Connect4 Game
+### Default Connect4 Game
 Start a new default Connect4 game with
 ```java
 final Connect4 game = new DefaultConnect4(playerOne, playerTwo);
@@ -56,7 +56,7 @@ final boolean draw = game.isDraw();
 
 **Note: The Round Result of the final round will also tell that information so you don't have to get it from the logs to tell the user who has won or if it was a draw.**
 
-#### Free positioned Connect4 Game
+### Free positioned Connect4 Game
 
 Due to some.. retardation, I designed the game so that a player is able to determine column and row. I recognized my mistake first when starting to write tests. After that I implemented the correct / default mode but I implemented it so that existing code can be used for it. So feel free to play a bigger version of Tic-Tac-Toe like that.
 
@@ -72,7 +72,7 @@ final RoundResult result = game.play(xCord, yCord);
 
 For the rest, the same rules from [above](#default-connect4-game) apply to this mode.
 
-### Game Log
+## Game Log
 
 I also implemented a game log so that you can provide information for each played round can be provided to the players without an own implementation.
 
@@ -84,7 +84,7 @@ final GameLog gameLog = game.getGameLog();
 You can get the whole game as a string, information for every valid round, all invalid rounds and many more. Check the `GameLog` class for all methods.
 
 ## Download
-Latest Version: version
+Latest Version: [![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
 
 **Make sure to replace the `VERSION` below with a real version as the one shown above!**
 
@@ -118,4 +118,4 @@ dependencies {
 
 ## JavaDoc
 
-JavaDoc is provided on [GitHub Pages](https://dmanstrator.github.io/Connect4/). Sources and JavaDoc will also be provided for each release.
+JavaDoc is provided on [GitHub Pages](https://dmanstrator.github.io/Connect4). Sources and JavaDoc will also be provided for each release.
