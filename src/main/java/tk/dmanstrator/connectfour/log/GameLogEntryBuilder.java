@@ -61,9 +61,9 @@ public class GameLogEntryBuilder {
     }
 
     /**
-     * Sets the message for the entry.
+     * Sets the player number for the entry.
      * 
-     * @param message Message to set
+     * @param playerNumber Player number to set
      * @return The builder instance, useful for chaining
      */
     public GameLogEntryBuilder setPlayerNumber(final int playerNumber) {

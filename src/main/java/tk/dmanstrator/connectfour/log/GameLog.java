@@ -47,7 +47,7 @@ public class GameLog {
     /**
      * Removes the entry with a given round number from the log.
      * 
-     * @param entry Round number of entry to remove from the game log
+     * @param roundNr Round number of entry to remove from the game log
      * @return {@code true} if entry was removed, else {@code false} since it wasn't in the log
      */
     public boolean removeEntryFromRound(final int roundNr)  {
