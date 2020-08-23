@@ -1,4 +1,4 @@
-[![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
+[![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/dmanstrator/maven/Connect4/_latestVersion)
 [![Test Coverage](https://img.shields.io/badge/Test%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
 [![Code Coverage](https://img.shields.io/badge/Code%20Coverage-100%25-%230066ff)](https://github.com/DManstrator/Connect4/tree/develop/src/test/java/tk/dmanstrator/connectfour)
 [![License](https://img.shields.io/github/license/DManstrator/Connect4?color=%230066ff)](https://github.com/DManstrator/Connect4/blob/master/LICENSE)
@@ -84,7 +84,7 @@ final GameLog gameLog = game.getGameLog();
 You can get the whole game as a string, information for every valid round, all invalid rounds and many more. Check the `GameLog` class for all methods.
 
 ## Download
-Latest Version: [![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/DManstrator/maven/Connect4/_latestVersion)
+Latest Version: [![JCenter](https://api.bintray.com/packages/dmanstrator/maven/Connect4/images/download.svg)](https://bintray.com/dmanstrator/maven/Connect4/_latestVersion)
 
 **Make sure to replace the `VERSION` below with a real version as the one shown above!**
 
