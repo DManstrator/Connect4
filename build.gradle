@@ -52,7 +52,11 @@ javadoc {
     destinationDir = new File("${project.rootDir}/docs")
     options.memberLevel = JavadocMemberLevel.PUBLIC
     options.encoding = 'UTF-8'
-    //options.addBooleanOption('html5', true)  // doesn't work with JDK8 and lower
+    // doesn't work with JDK8 and lower
+    //options.addBooleanOption('html5', true)
+    //options.addStringOption("-release", "8")
+    // doesn't work with JDK10 and lower
+    //options.addBooleanOption("-no-module-directories", true)
 }
 
 publishing {
